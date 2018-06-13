@@ -1,76 +1,76 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["SlimSelect"] = factory();
-	else
-		root["SlimSelect"] = factory();
+    if(typeof exports === 'object' && typeof module === 'object')
+        module.exports = factory();
+    else if(typeof define === 'function' && define.amd)
+        define([], factory);
+    else if(typeof exports === 'object')
+        exports["SlimSelect"] = factory();
+    else
+        root["SlimSelect"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
+/******/    // The module cache
+/******/    var installedModules = {};
 /******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/    // The require function
+/******/    function __webpack_require__(moduleId) {
 /******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
+/******/        // Check if module is in cache
+/******/        if(installedModules[moduleId]) {
+/******/            return installedModules[moduleId].exports;
+/******/        }
+/******/        // Create a new module (and put it into the cache)
+/******/        var module = installedModules[moduleId] = {
+/******/            i: moduleId,
+/******/            l: false,
+/******/            exports: {}
+/******/        };
 /******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/        // Execute the module function
+/******/        modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
+/******/        // Flag the module as loaded
+/******/        module.l = true;
 /******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+/******/        // Return the exports of the module
+/******/        return module.exports;
+/******/    }
 /******/
 /******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
+/******/    // expose the modules object (__webpack_modules__)
+/******/    __webpack_require__.m = modules;
 /******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
+/******/    // expose the module cache
+/******/    __webpack_require__.c = installedModules;
 /******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
+/******/    // define getter function for harmony exports
+/******/    __webpack_require__.d = function(exports, name, getter) {
+/******/        if(!__webpack_require__.o(exports, name)) {
+/******/            Object.defineProperty(exports, name, {
+/******/                configurable: false,
+/******/                enumerable: true,
+/******/                get: getter
+/******/            });
+/******/        }
+/******/    };
 /******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
+/******/    // getDefaultExport function for compatibility with non-harmony modules
+/******/    __webpack_require__.n = function(module) {
+/******/        var getter = module && module.__esModule ?
+/******/            function getDefault() { return module['default']; } :
+/******/            function getModuleExports() { return module; };
+/******/        __webpack_require__.d(getter, 'a', getter);
+/******/        return getter;
+/******/    };
 /******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/    // Object.prototype.hasOwnProperty.call
+/******/    __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/    // __webpack_public_path__
+/******/    __webpack_require__.p = "/";
 /******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/    // Load entry module and return exports
+/******/    return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -545,8 +545,11 @@ var SlimSelect = /** @class */ (function () {
             showContent: info.showContent,
             placeholderText: info.placeholder,
             allowDeselect: info.allowDeselect,
+            allowDeselectOnMultiple: info.allowDeselectOnMultiple,
+            closeOnClick: info.closeOnClick,
             isEnabled: info.isEnabled,
-            valuesUseText: info.valuesUseText
+            valuesUseText: info.valuesUseText,
+            unselectOnlyOnXClick: info.unselectOnlyOnXClick
         });
         this.select = new select_1["default"]({
             select: selectElement,
@@ -982,13 +985,16 @@ var config = /** @class */ (function () {
         this.showSearch = true;
         this.searchHighlight = false;
         this.closeOnSelect = true;
+        this.closeOnClick = false;
         this.showContent = 'auto'; // options: auto, up, down
         this.searchPlaceholder = 'Search';
         this.searchText = 'No Results';
         this.placeholderText = 'Select Value';
         this.allowDeselect = false;
+        this.allowDeselectOnMultiple = false;
         this.isEnabled = true;
         this.valuesUseText = false;
+
         // Classes
         this.main = 'ss-main';
         this.singleSelected = 'ss-single-selected';
@@ -1022,6 +1028,8 @@ var config = /** @class */ (function () {
         this.showSearch = (info.showSearch === false ? false : true);
         this.searchHighlight = (info.searchHighlight === true ? true : false);
         this.closeOnSelect = (info.closeOnSelect === false ? false : true);
+        //  Unselect Value when you click on X icon. If you set it to true, unselect when you click wherever on tag.
+        this.unselectOnlyOnXClick = (info.unselectOnlyOnXClick === false ? false : true);
         if (info.showContent) {
             this.showContent = info.showContent;
         }
@@ -1036,6 +1044,8 @@ var config = /** @class */ (function () {
             this.placeholderText = info.placeholderText;
         }
         this.allowDeselect = (info.allowDeselect === true ? true : false);
+        this.allowDeselectOnMultiple = (info.allowDeselectOnMultiple === true ? true : false);
+        this.closeOnClick = (info.closeOnClick === true ? true : false);
         if (info.valuesUseText) {
             this.valuesUseText = info.valuesUseText;
         }
@@ -1321,7 +1331,11 @@ var slim = /** @class */ (function () {
             // Open only if you are not clicking on x text
             var target = e.target;
             if (!target.classList.contains(_this.main.config.valueDelete)) {
-                _this.main.open();
+                if (!_this.main.config.closeOnClick || !_this.main.data.contentOpen) {
+                    _this.main.open();
+                } else {
+                    _this.main.close();
+                }
             }
         };
         return {
@@ -1400,7 +1414,8 @@ var slim = /** @class */ (function () {
         var deleteSpan = document.createElement('span');
         deleteSpan.classList.add(this.main.config.valueDelete);
         deleteSpan.innerHTML = 'x';
-        deleteSpan.onclick = function (e) {
+        var deleteElement = (this.main.config.unselectOnlyOnXClick !== false ? deleteSpan : value);
+        deleteElement.onclick = function (e) {
             e.preventDefault();
             e.stopPropagation();
             if (!_this.main.config.isEnabled) {
@@ -1695,6 +1710,7 @@ var slim = /** @class */ (function () {
             var noResults = document.createElement('div');
             noResults.classList.add(this.main.config.option);
             noResults.classList.add(this.main.config.disabled);
+            noResults.classList.add('noBackground');
             noResults.innerHTML = this.main.config.searchText;
             this.list.appendChild(noResults);
             return;
@@ -1736,7 +1752,8 @@ var slim = /** @class */ (function () {
         var selected = this.main.data.getSelected();
         option.dataset.id = data.id;
         if (this.main.config.searchHighlight && this.main.slim && this.main.slim.search.input.value.trim() !== '') {
-            option.innerHTML = helper_1.highlight(data.innerHTML, this.main.slim.search.input.value, this.main.config.searchHighlighter);
+            option.classList.add('noBackground');
+            option.innerHTML = helper_1.highlight(data.text, this.main.slim.search.input.value, this.main.config.searchHighlighter);
         }
         else {
             option.innerHTML = data.innerHTML;
@@ -1768,7 +1785,26 @@ var slim = /** @class */ (function () {
             }
         };
         if (data.disabled || (selected && helper_1.isValueInArrayOfObjects(selected, 'id', data.id))) {
-            option.onclick = null;
+            if (!master.main.config.allowDeselectOnMultiple) {
+                option.onclick = null;
+            } else {
+                option.onclick = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var element = this;
+                    var elementID = String(element.dataset.id);
+                    var selected = master.multiSelected.values.childNodes;
+                    var selectedL = selected.length
+                    var node = {};
+                    for (var c = 0; c < selectedL; c++) {
+                        node = selected[c];
+                        if (elementID === String(node.dataset.id)) {
+                            $(node).trigger('click');
+                            break;
+                        }
+                    }
+                };
+            }
             option.classList.add(this.main.config.disabled);
         }
         return option;
